@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Easy | 莫蘭迪奶油風健身空間</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9f7f2; /* 奶油底色 */
+            color: #4a4a4a; /* 深灰棕文字 */
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+                        url('https://images.unsplash.com/photo-1518611012118-296072bb5604?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 莫蘭迪色調定義 */
+        .color-cream { background-color: #fdfbf7; }
+        .color-sage { background-color: #a3b18a; } /* 豆沙綠 */
+        .color-dusty-blue { background-color: #97a7b0; } /* 霧霾藍 */
+        .color-clay { background-color: #bfa89e; } /* 莫蘭迪粉褐 */
+        
+        .text-sage { color: #8a9a5b; }
+        
+        .soft-shadow {
+            box-shadow: 0 10px 30px rgba(180, 170, 150, 0.1);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(180, 170, 150, 0.15);
+        }
+
+        /* 柔和按鈕 */
+        .btn-primary {
+            background-color: #a3b18a;
+            color: white;
+            transition: opacity 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        
+        /* 載入動畫 (簡單版) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#a3b18a] selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-[#e5e1d8]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-10 text-sm tracking-widest">
+                        <a href="#home" class="hover:text-[#a3b18a] transition-colors">首頁</a>
+                        <a href="#features" class="hover:text-[#a3b18a] transition-colors">空間美學</a>
+                        <a href="#classes" class="hover:text-[#a3b18a] transition-colors">課程體驗</a>
+                        <a href="#pricing" class="hover:text-[#a3b18a] transition-colors">會員方案</a>
+                        <a href="#contact" class="btn-primary px-8 py-2.5 rounded-full font-medium transition-all shadow-md">預約參觀</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg h-screen flex items-center justify-start px-8 md:px-24">
+        <div class="max-w-2xl animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-light mb-8 leading-tight text-[#5a5a5a]">
+                在靜謐中<br>
+                <span class="font-medium text-[#8a9a5b]">重塑身心的平衡</span>
+            </h1>
+            <p class="text-lg md:text-xl text-[#8e8e8e] mb-12 font-light tracking-wide leading-relaxed">
+                輕盈舒展喚醒身體的美好<br>溫暖的氛圍與專業的陪伴，與身體來場暖心的對話
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6">
+                <a href="#pricing" class="btn-primary text-center px-12 py-4 rounded-full font-medium text-lg shadow-lg">開始旅程</a>
+                <a href="#features" class="bg-white/80 text-[#8e8e8e] text-center border border-[#e5e1d8] px-12 py-4 rounded-full font-medium text-lg hover:bg-white transition-colors shadow-sm">探索空間</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-32 bg-[#fdfbf7]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-[#bfa89e] tracking-[0.3em] text-sm uppercase mb-4 block">Here For You</span>
+                <h2 class="text-3xl md:text-4xl font-light text-[#5a5a5a]">我們為妳準備的</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
+                    <div class="h-64 relative">
+                        <img src="" alt="諮詢區" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-[#a3b18a]/10"></div>
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">理解與陪伴｜專業諮詢</h3>
+                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">透過科學化的專業評估，讀懂妳身體的獨特需求，量身打造專屬的安心計畫。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="瑜珈區" class="w-full h-full object-cover grayscale-[30%]">
+                        <div class="absolute inset-0 bg-[#97a7b0]/10"></div>
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">流動與舒展｜瑜珈</h3>
+                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">跟隨呼吸的韻律輕柔伸展，感受身心合一的流暢，享受平靜而愉悅的當下。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
+                    <div class="h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80" alt="肌力區" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-[#bfa89e]/10"></div>
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">活力與自信｜徒手肌力</h3>
+                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">回歸最自然的身體運用，喚醒內在的支撐力量，為日常生活注入飽滿的精氣神。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing-non-member" class="py-32 bg-[#f4f1ea]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-light mb-4 text-[#5a5a5a]">開始旅程</h2>
+            <p class="text-[#8e8e8e] mb-20 font-light">開啟您的身心質感生活</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="p-12 bg-white rounded-[2.5rem] soft-shadow">
+                    <h3 class="text-lg mb-4 text-[#8e8e8e] tracking-widest uppercase">單堂</h3>
+                    <div class="text-3xl font-light mb-8 text-[#5a5a5a]">NT$ 750 <span class="text-sm font-light">/堂</span></div>
+                    <div class="w-12 h-[1px] bg-[#e5e1d8] mx-auto mb-8"></div>
+                    <ul class="text-[#8e8e8e] space-y-4 mb-12 font-light text-sm">
+                        <li>使用期限 90天</li>
+                    </ul>
+                </div>
+                <div class="p-16 bg-white rounded-[2.5rem] soft-shadow border border-[#a3b18a]/30 relative scale-105">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 color-sage text-white px-6 py-1.5 rounded-full text-xs tracking-widest">START NOW</div>
+                    <h3 class="text-lg mb-4 text-[#8a9a5b] font-medium tracking-widest uppercase">基礎體驗</h3>
+                    <div class="text-4xl font-light mb-8 text-[#5a5a5a]">NT$ 1100 <span class="text-sm font-light">2/堂</span></div>
+                    <div class="w-12 h-[1px] bg-[#a3b18a]/30 mx-auto mb-8"></div>
+                    <ul class="text-[#5a5a5a] space-y-4 mb-12 font-light text-sm">
+                        <li class="font-medium text-[#8a9a5b]">任選課程體驗</li>
+                        <li>專業基本諮詢</li>
+                        <li>限購一次</li>
+                    </ul>
+                    <buttaon class="w-full py-4 rounded-full btn-primary shadow-lg shadow-[#a3b18a]/20" href="#contact" >立即加入</button>
+                </div>
+                <div class="p-12 bg-white rounded-[2.5rem] soft-shadow">
+                    <h3 class="text-lg mb-4 text-[#8e8e8e] tracking-widest uppercase">加入會員</h3>
+                    <div class="text-3xl font-light mb-8 text-[#5a5a5a]">NT$ 1100 <span class="text-sm font-light">/人</span></div>
+                    <div class="w-12 h-[1px] bg-[#e5e1d8] mx-auto mb-8"></div>
+                    <ul class="text-[#8e8e8e] space-y-4 mb-12 font-light text-sm">
+                        <li>生日慶祝優惠 1堂</li>
+                        <li>獨享會員價格</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pricing-member" class="py-32 bg-[#f4f1ea]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-light mb-4 text-[#5a5a5a]">會員專屬優惠</h2>
+            <p class="text-[#8e8e8e] mb-20 font-light">開啟您的身心質感生活</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="p-12 bg-white rounded-[2.5rem] soft-shadow">
+                    <h3 class="text-lg mb-4 text-[#8e8e8e] tracking-widest uppercase">新手友善班</h3>
+                    <div class="text-3xl font-light mb-8 text-[#5a5a5a]">NT$ 6940 <span class="text-sm font-light">12/堂</span></div>
+                    <div class="w-12 h-[1px] bg-[#e5e1d8] mx-auto mb-8"></div>
+                    <ul class="text-[#8e8e8e] space-y-4 mb-12 font-light text-sm">
+                        <li>平均 NT$ 578/堂</li>
+                        <li>使用期限 90天</li>
+                    </ul>
+                </div>
+                <div class="p-12 bg-white rounded-[2.5rem] soft-shadow">
+                    <h3 class="text-lg mb-4 text-[#8e8e8e] tracking-widest uppercase">體態輕盈有感班</h3>
+                    <div class="text-3xl font-light mb-8 text-[#5a5a5a]">NT$ 10400 <span class="text-sm font-light">18+1/堂</span></div>
+                    <div class="w-12 h-[1px] bg-[#e5e1d8] mx-auto mb-8"></div>
+                    <ul class="text-[#8e8e8e] space-y-4 mb-12 font-light text-sm">
+                        <li>平均 NT$ 547/堂</li>
+                        <li>使用期限 90天</li>
+                    </ul>
+                </div>
+                <div class="p-12 bg-white rounded-[2.5rem] soft-shadow">
+                    <h3 class="text-lg mb-4 text-[#8e8e8e] tracking-widest uppercase">極致回春凍齡養成班</h3>
+                    <div class="text-3xl font-light mb-8 text-[#5a5a5a]">NT$ 16880 <span class="text-sm font-light">30+3/堂</span></div>
+                    <div class="w-12 h-[1px] bg-[#e5e1d8] mx-auto mb-8"></div>
+                    <ul class="text-[#8e8e8e] space-y-4 mb-12 font-light text-sm">
+                        <li>專業進階諮詢</li>
+                        <li>平均 NT$ 511/堂</li>
+                        <li>使用期限 180天</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-32 bg-[#fdfbf7]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-24 items-center">
+            <div class="md:w-1/2">
+                <span class="text-[#bfa89e] tracking-[0.3em] text-sm uppercase mb-4 block">Reservation</span>
+                <h2 class="text-4xl font-light mb-8 text-[#5a5a5a]">開啟您的<br><span class="text-[#a3b18a]">質感健體體驗</span></h2>
+                <p class="text-[#8e8e8e] font-light leading-relaxed mb-12">
+                    我們提供預約制的空間導覽服務，讓您在正式加入前先感受這裡的氛圍。<br>填寫右側表單，專屬顧問將與您聯絡。
+                </p>
+                <div class="space-y-6 text-[#8e8e8e] font-light text-sm tracking-widest">
+                    <p class="flex items-center"><span class="w-8 h-[1px] bg-[#e5e1d8] mr-4"></span> 台北市信義區莫蘭迪大道 101 號</p>
+                    <p class="flex items-center"><span class="w-8 h-[1px] bg-[#e5e1d8] mr-4"></span> 02 - 8888 9999</p>
+                    <p class="flex items-center"><span class="w-8 h-[1px] bg-[#e5e1d8] mr-4"></span> MON - SUN / 07:00 - 23:00</p>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 w-full">
+                <form name="submit-to-google-sheet" class="bg-white p-12 rounded-[2.5rem] soft-shadow border border-[#f4f1ea]">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <input name="Name" type="text" class="w-full bg-[#fdfbf7] border-none rounded-2xl px-6 py-4 focus:ring-1 focus:ring-[#a3b18a] outline-none text-sm" placeholder="您的姓名" required>
+                        </div>
+                        <div>
+                            <input name="Phone" type="tel" class="w-full bg-[#fdfbf7] border-none rounded-2xl px-6 py-4 focus:ring-1 focus:ring-[#a3b18a] outline-none text-sm" placeholder="聯絡電話" required>
+                        </div>
+                        <div>
+                            <select name="Purpose" class="w-full bg-[#fdfbf7] border-none rounded-2xl px-6 py-4 focus:ring-1 focus:ring-[#a3b18a] outline-none text-sm text-[#8e8e8e]">
+                                <option>預約參觀導覽</option>
+                                <option>諮詢教練課程</option>
+                                <option>入會方案詢問</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-4 rounded-2xl font-medium tracking-widest mt-4 shadow-lg shadow-[#a3b18a]/20">提交預約單</button>
+                        
+                        <p id="msg" class="text-center text-sm mt-2 text-[#8a9a5b] font-medium h-6"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-white border-t border-[#f4f1ea] text-center">
+        <div class="mb-10">
+            <span class="text-xl font-medium tracking-[0.4em] text-[#8a9a5b]">SOFT<span class="font-light text-[#bfa89e]">SPACE</span></span>
+        </div>
+        <div class="flex justify-center space-x-12 mb-10 text-xs tracking-[0.2em] text-[#bfa89e] uppercase">
+            <a href="#" class="hover:text-[#a3b18a] transition-colors">Instagram</a>
+            <a href="#" class="hover:text-[#a3b18a] transition-colors">Facebook</a>
+            <a href="#" class="hover:text-[#a3b18a] transition-colors">Journal</a>
+        </div>
+        <p class="text-[10px] text-[#d1ccc0] tracking-widest uppercase">&copy; 2025 SoftSpace Fitness Gallery. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // ⚠️ 請在此處貼上您剛剛部署好的 Google Apps Script 網址 ⚠️
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyzAgUTuffrM7YZYtfyXmggIW1KQPFspNEmvux7EJaoN5t4_MCYLLmJV9zuM-gXWwhl/exec';
+      
+      const form = document.forms['submit-to-google-sheet'];
+      const msg = document.getElementById('msg');
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // 改變按鈕文字或狀態讓使用者知道正在傳送
+        const btn = form.querySelector('button');
+        const originalBtnText = btn.innerText;
+        btn.innerText = "傳送中...";
+        btn.disabled = true;
+        btn.style.opacity = "0.7";
+    
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML = "預約已送出，我們將盡快聯繫您！";
+            form.reset();
+            // 復原按鈕
+            btn.innerText = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            
+            // 5秒後清除成功訊息
+            setTimeout(() => { msg.innerHTML = "" }, 5000);
+          })
+          .catch(error => {
+            msg.innerHTML = "傳送失敗，請稍後再試或直接來電。";
+            msg.style.color = "#d9534f"; // 錯誤時顯示紅色
+            console.error('Error!', error.message);
+            // 復原按鈕
+            btn.innerText = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = "1";
+          });
+      });
+    </script>
+</body>
+</html>

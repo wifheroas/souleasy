@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Easy Journal | 部落格</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f9f7f2; color: #4a4a4a; scroll-behavior: smooth; }
+        .text-sage { color: #8a9a5b; }
+        .soft-shadow { box-shadow: 0 10px 30px rgba(180, 170, 150, 0.1); }
+        /* 骨架屏動畫 (Loading placeholder) */
+        .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-[#e5e1d8]">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+            <a href="index.html" class="text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></a>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-10 text-sm tracking-widest">
+                    <a href="index.html" class="hover:text-[#a3b18a] transition-colors">首頁</a>
+                    <a href="blog.html" class="hover:text-[#a3b18a] transition-colors">部落格專欄</a>
+                    <a href="#contact" class="px-8 py-2.5 rounded-full font-medium border border-sage text-sage hover:bg-sage hover:text-white transition-all">預約參觀</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <header class="text-center mb-24">
+                <span class="text-[#bfa89e] tracking-[0.4em] text-xs uppercase mb-4 block">Soul Easy Journal</span>
+                <h2 class="text-4xl font-light text-[#5a5a5a]">部落格專欄</h2>
+            </header>
+
+            <section class="mb-24">
+                <div class="flex items-center justify-between mb-10 border-b border-[#e5e1d8] pb-4">
+                    <h3 class="text-2xl font-light text-[#5a5a5a] tracking-widest">最新公告</h3>
+                    <span class="text-[10px] text-[#bfa89e] uppercase tracking-widest">Announcements</span>
+                </div>
+                <div id="container-announcement" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    </div>
+            </section>
+
+            <section class="mb-24">
+                <div class="flex items-center justify-between mb-10 border-b border-[#e5e1d8] pb-4">
+                    <h3 class="text-2xl font-light text-[#5a5a5a] tracking-widest">學員心聲</h3>
+                    <span class="text-[10px] text-[#bfa89e] uppercase tracking-widest">Student Stories</span>
+                </div>
+                <div id="container-student" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    </div>
+            </section>
+
+            <section class="mb-24">
+                <div class="flex items-center justify-between mb-10 border-b border-[#e5e1d8] pb-4">
+                    <h3 class="text-2xl font-light text-[#5a5a5a] tracking-widest">健康資訊</h3>
+                    <span class="text-[10px] text-[#bfa89e] uppercase tracking-widest">Health & Wellness</span>
+                </div>
+                <div id="container-health" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="py-20 bg-white border-t border-[#f4f1ea] text-center">
+        <span class="text-xl font-medium tracking-[0.4em] text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></span>
+        <div class="mt-8 flex justify-center space-x-12 text-[10px] text-[#bfa89e] tracking-widest uppercase">
+            <a href="index.html" class="hover:text-sage transition-colors">Back Home</a>
+            <a href="#" class="hover:text-sage transition-colors">Instagram</a>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { db } from './config.js';
+        import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        async function loadArticles() {
+            try {
+                // 1. 從 Firestore 抓取所有文章，按時間降序排列
+                const q = query(collection(db, "article"), orderBy("create_time", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                // 清空容器（可選，如果你有寫 Loading 佔位符的話）
+                const containers = {
+                    '公告': document.getElementById('container-announcement'),
+                    '學員心得': document.getElementById('container-student'),
+                    '健身知識': document.getElementById('container-health')
+                };
+
+                querySnapshot.forEach((doc) => {
+                    const article = doc.data();
+                    console.log("data: "+article)
+                    const id = doc.id;
+                    const date = article.create_time ? article.create_time.toDate().toLocaleDateString('zh-TW') : '';
+                    
+                    // 根據類別渲染到不同區塊
+                    if (article.category === '公告') {
+                        renderAnnouncement(containers['公告'], id, article, date);
+                    } else if (article.category === '學員心得') {
+                        renderStudentStory(containers['學員心得'], id, article, date);
+                    } else if (article.category === '健身知識') {
+                        renderHealthInfo(containers['健身知識'], id, article, date);
+                    }
+                });
+
+            } catch (error) {
+                console.error("載入文章失敗:", error);
+            }
+        }
+
+        // 渲染：最新公告 (橫向小卡)
+        function renderAnnouncement(container, id, data, date) {
+            const html = `
+                <a href="article.html?id=${id}" class="group flex gap-6 items-start bg-white p-6 rounded-[2rem] soft-shadow transition-transform hover:-translate-y-1">
+                    <div class="w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
+                        <img src="${data.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div>
+                        <span class="text-[#bfa89e] text-[10px] mb-2 block tracking-widest uppercase">${date}</span>
+                        <h4 class="text-lg font-medium text-[#5a5a5a] group-hover:text-sage transition-colors mb-2">${data.title}</h4>
+                        <div class="text-xs text-[#8e8e8e] font-light line-clamp-2">${stripHtml(data.content)}</div>
+                    </div>
+                </a>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        // 渲染：學員心聲 (大圖卡片)
+        function renderStudentStory(container, id, data, date) {
+            const html = `
+                <a href="article.html?id=${id}" class="group block">
+                    <div class="rounded-[2.5rem] overflow-hidden mb-8 h-64 soft-shadow">
+                        <img src="${data.image}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <h4 class="text-xl text-[#5a5a5a] font-medium mb-4 group-hover:text-sage transition-colors leading-relaxed">${data.title}</h4>
+                    <div class="text-[#8e8e8e] font-light text-sm line-clamp-3">${stripHtml(data.content)}</div>
+                </a>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        // 渲染：健康資訊 (白底卡片)
+        function renderHealthInfo(container, id, data, date) {
+            const html = `
+                <a href="article.html?id=${id}" class="group bg-white rounded-[2.5rem] overflow-hidden soft-shadow transition-all hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${data.image}" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-[#bfa89e] text-[10px] tracking-widest mb-4 block">WELLNESS / ${date}</span>
+                        <h4 class="text-lg font-medium text-[#5a5a5a] group-hover:text-sage transition-colors mb-4">${data.title}</h4>
+                        <div class="text-xs text-[#8e8e8e] font-light leading-relaxed line-clamp-2">${stripHtml(data.content)}</div>
+                    </div>
+                </a>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        // 工具：去除 HTML 標籤（用於卡片簡介）
+        function stripHtml(html) {
+            let tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+        }
+
+        // 執行
+        loadArticles();
+    </script>
+</body>
+</html>

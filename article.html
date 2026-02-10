@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Easy | 文章詳情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #fff; color: #4a4a4a; }
+        .text-sage { color: #8a9a5b; }
+        .soft-shadow { box-shadow: 0 10px 40px rgba(180, 170, 150, 0.1); }
+        /* 優化文章內文樣式 */
+        #body-text h3 { font-size: 1.5rem; font-weight: 500; color: #5a5a5a; margin-top: 2.5rem; }
+        #body-text p { margin-bottom: 1.5rem; }
+        #body-text ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        #body-text li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-[#e5e1d8]">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+            <a href="index.html" class="text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></a>
+            <a href="blog.html" class="text-sm tracking-widest uppercase hover:text-sage transition-colors">返回部落格列表</a>
+        </div>
+    </nav>
+
+    <main class="py-32 px-6">
+        <div class="max-w-3xl mx-auto">
+            <div id="loading" class="text-center py-20 text-[#bfa89e] italic tracking-widest">
+                正在從雲端載入內容...
+            </div>
+            
+            <article id="article-content" class="hidden">
+                <header class="mb-12">
+                    <span id="category" class="bg-[#a3b18a]/10 text-sage px-4 py-1 rounded-full text-[10px] tracking-widest uppercase mb-6 inline-block"></span>
+                    <h1 id="title" class="text-3xl md:text-5xl font-medium text-[#5a5a5a] mb-8 leading-tight"></h1>
+                    <div class="flex items-center text-[#bfa89e] text-xs border-b border-[#f4f1ea] pb-8 tracking-[0.2em] uppercase">
+                        <span id="date"></span>
+                        <span class="mx-4">|</span>
+                        <span>BY SOUL EASY EDITORIAL</span>
+                    </div>
+                </header>
+
+                <div id="image-container" class="hidden rounded-[2.5rem] overflow-hidden mb-16 soft-shadow">
+                    <img id="cover-image" src="" class="w-full h-[500px] object-cover">
+                </div>
+
+                <div id="video-container"></div>
+
+                <div id="body-text" class="text-[#8e8e8e] font-light leading-[2.2] text-lg">
+                    </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="py-20 bg-[#fdfbf7] border-t border-[#f4f1ea] text-center">
+        <a href="blog.html" class="text-xs text-[#bfa89e] tracking-widest uppercase hover:text-sage">Explore More Stories</a>
+    </footer>
+
+    <script type="module">
+        import { db } from './config.js';
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        async function initArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (!id) {
+                document.getElementById('loading').innerText = "未指定文章 ID，請返回列表頁。";
+                return;
+            }
+
+            try {
+                // 指向 Firebase 中的資料 (Collection 名稱需為 articles)
+                const docRef = doc(db, "article", id);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+
+                    // 1. 填充基本文字
+                    document.getElementById('category').innerText = data.category || "General";
+                    document.getElementById('title').innerText = data.title || "無標題";
+                    
+                    if (data.create_time) {
+                        // Firebase Timestamp 轉為日期字串
+                        const dateObj = data.create_time.toDate();
+                        document.getElementById('date').innerText = dateObj.toLocaleDateString('zh-TW');
+                    }
+
+                    // 2. 處理圖片 (如果有提供 URL 才顯示)
+                    if (data.image) {
+                        document.getElementById('cover-image').src = data.image;
+                        document.getElementById('image-container').classList.remove('hidden');
+                    }
+
+                    // 3. 處理影片 (YouTube 嵌入)
+                    if (data.video) {
+                        const embedUrl = convertToEmbedUrl(data.video);
+                        document.getElementById('video-container').innerHTML = `
+                            <div class="aspect-video mb-16 rounded-[2.5rem] overflow-hidden soft-shadow">
+                                <iframe class="w-full h-full" src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    }
+
+                    // 4. 處理內文 (支援 HTML 格式)
+                    document.getElementById('body-text').innerHTML = data.content || "";
+
+                    // 5. 顯示內容並切換標題
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('article-content').classList.remove('hidden');
+                    document.title = (data.title || "文章") + " | Soul Easy";
+
+                } else {
+                    document.getElementById('loading').innerText = "找不到該文章 (ID: " + id + ")";
+                }
+            } catch (error) {
+                console.error("Firebase 讀取錯誤:", error);
+                document.getElementById('loading').innerText = "連線失敗，請檢查資料庫權限設定。";
+            }
+        }
+
+        // 輔助函式：將 YouTube 連結轉為 Embed 格式
+        function convertToEmbedUrl(url) {
+            if (url.includes('youtube.com/watch?v=')) {
+                return url.replace('watch?v=', 'embed/');
+            } else if (url.includes('youtu.be/')) {
+                const id = url.split('/').pop();
+                return `https://www.youtube.com/embed/${id}`;
+            }
+            return url;
+        }
+
+        // 執行
+        initArticle();
+    </script>
+</body>
+</html>
