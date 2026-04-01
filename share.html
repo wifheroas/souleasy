@@ -1,0 +1,71 @@
+    <!-- 學員分享 Section -->
+    <section id="testimonials" class="py-32 bg-[#f4f1ea] relative">
+        <div class="max-w-full mx-auto px-6">
+            
+            <div class="flex justify-between items-end mb-16 pl-20">
+                <div>
+                    <span class="text-[#bfa89e] tracking-[0.3em] text-sm uppercase mb-4 block">Stories</span>
+                    <h2 class="text-3xl md:text-4xl font-light text-[#5a5a5a]">學員的心聲</h2>
+                </div>
+                
+                <div class="hidden md:flex gap-4">
+                    <button onclick="scrollSlider('left')" class="w-12 h-12 rounded-full border border-[#d1cdc2] flex items-center justify-center text-[#5a5a5a] hover:bg-white transition-all shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <button onclick="scrollSlider('right')" class="w-12 h-12 rounded-full border border-[#d1cdc2] flex items-center justify-center text-[#5a5a5a] hover:bg-white transition-all shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="testimonial-slider" class="flex gap-8 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar scroll-smooth">
+                <div class="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white p-12 rounded-[3rem] soft-shadow flex flex-col justify-center">
+                    <span class="text-6xl text-[#8a9a5b]/20 font-serif leading-none">“</span>
+                    <p class="text-[#8e8e8e] text-lg italic font-light leading-relaxed mb-8 -mt-4">
+                        在這裡訓練一點壓力都沒有。教練非常細心，不僅調整我的動作，更在乎我的情緒與疲勞狀態。這裡已經成為我下班後最期待的避風港。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#f4f1ea] flex items-center justify-center text-[#5a5a5a] font-medium">郁</div>
+                        <div>
+                            <h4 class="text-[#5a5a5a] font-medium">小郁</h4>
+                            <span class="text-xs text-[#bfa89e]">廣告行銷</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white overflow-hidden rounded-[3rem] soft-shadow flex flex-col">
+                    <div class="h-64 w-full">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" 
+                            alt="瑜珈空間" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-xl font-medium text-[#5a5a5a] mb-3">靜謐的練習空間</h3>
+                        <p class="text-[#8e8e8e] text-sm font-light leading-relaxed">
+                            我們打造了一個遠離塵囂的角落，讓你每一刻的呼吸都能與自然共鳴。
+                        </p>
+                    </div>
+                </div>
+                <div class="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white overflow-hidden rounded-[3rem] soft-shadow flex flex-col">
+                    <div class="aspect-video w-full bg-black relative">
+                        <iframe 
+                            class="absolute inset-0 w-full h-full" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-xl font-medium text-[#5a5a5a] mb-3">30 秒帶你認識流動瑜珈</h3>
+                        <p class="text-[#8e8e8e] text-sm font-light">
+                            點擊上方影片，感受身心合一的律動過程。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
