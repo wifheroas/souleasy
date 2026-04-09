@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #F9F7F2;
+      --text: #544F4A;
+      --accent-blue: #C5CFD6;
+      --accent-rose: #D6C9C5;
+      --accent-sage: #CBD6C5;
+      --line: #E0DDD7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Optima", "PingFang TC", "Microsoft JhengHei", serif;
+      padding: 80px 20px;
+    }
+
+    .motion-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* --- 標題設計 --- */
+    .header {
+      margin-bottom: 80px;
+    }
+
+    .header h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 5px;
+      margin-bottom: 15px;
+    }
+
+    .header .subtitle {
+      color: #9E968E;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    /* --- 循環動能環 --- */
+    .cycle-container {
+      position: relative;
+      height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 中央圓環背景 */
+    .central-ring {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px dashed var(--line);
+      border-radius: 50%;
+      animation: rotate 60s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* 齒輪元件排版 */
+    .node {
+      position: absolute;
+      width: 280px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* 定位三點 */
+    .node-cardio { top: 0; }
+    .node-strength { bottom: 50px; left: 0; }
+    .node-flex { bottom: 50px; right: 0; }
+
+    .node-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      filter: grayscale(0.2);
+    }
+
+    .node h3 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .metaphor-tag {
+      display: inline-block;
+      padding: 4px 15px;
+      font-size: 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .node-cardio .metaphor-tag { background: var(--accent-blue); }
+    .node-strength .metaphor-tag { background: var(--accent-rose); }
+    .node-flex .metaphor-tag { background: var(--accent-sage); }
+
+    .node-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      padding: 0 20px;
+    }
+
+    /* 負面循環警示 */
+    .node-warning {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #B29696;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* 連接線 (傳動軸感) */
+    .connector {
+      position: absolute;
+      background: var(--line);
+      z-index: 1;
+    }
+
+    /* 底部總結區塊 */
+    .summary-box {
+      margin-top: 50px;
+      padding: 60px;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .summary-box h4 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    .summary-box p {
+      color: #8C8279;
+      line-height: 2;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 900px) {
+      .cycle-container { height: auto; flex-direction: column; gap: 80px; }
+      .central-ring { display: none; }
+      .node { position: static; width: 100%; }
+      .summary-box { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="motion-wrap">
+  <header class="header">
+    <h2>運動科學的平衡循環</h2>
+    <p class="subtitle">三大核心支柱：驅動身體這台精密車輛的關鍵</p>
+  </header>
+
+  <div class="cycle-container">
+    <div class="central-ring"></div>
+
+    <div class="node node-cardio">
+      <div class="node-icon">⚙️</div>
+      <span class="metaphor-tag">引擎：動力來源</span>
+      <h3>有氧運動</h3>
+      <p class="node-desc">決定能量輸出，讓身體<b>動得更久</b></p>
+      <p class="node-warning">⚠️ 只有有氧：容易累（引擎空轉）</p>
+    </div>
+
+    <div class="node node-strength">
+      <div class="node-icon">🔩</div>
+      <span class="metaphor-tag">車體支架：耐操程度</span>
+      <h3>肌力訓練</h3>
+      <p class="node-desc">構建結構強度，讓身體<b>動得更強</b></p>
+      <p class="node-warning">⚠️ 只有肌力：容易緊（支架過剛）</p>
+    </div>
+
+    <div class="node node-flex">
+      <div class="node-icon">🌀</div>
+      <span class="metaphor-tag">避震潤滑：靈活性</span>
+      <h3>柔軟度與伸展</h3>
+      <p class="node-desc">保障活動範圍，讓身體<b>動得自在</b></p>
+      <p class="node-warning">⚠️ 只有柔軟：沒支撐力（避震過軟）</p>
+    </div>
+  </div>
+
+  <footer class="summary-box">
+    <h4>身體穩，心也穩</h4>
+    <p>
+      我們並非要求每項都要練到頂尖，而是透過了解自己的身體，<b>避免明顯的弱項</b>。
+      這是一個平衡的運動循環，讓你在日常生活中動得更長遠，避開不可逆的受傷風險。
+    </p>
+  </footer>
+</section>
+
+</body>
+</html>

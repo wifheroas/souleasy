@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --m-cream: #F7F3ED;
+      --m-taupe: #5D564F;
+      --m-sand: #BDB2A7;
+      --m-accent: #8E9775; /* 莫蘭迪綠 */
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--m-cream);
+      color: var(--m-taupe);
+      font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .section-wrap {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    /* 標題設計 */
+    .header {
+      border-bottom: 1px solid var(--m-sand);
+      padding-bottom: 40px;
+      margin-bottom: 60px;
+    }
+
+    .header h2 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      margin: 0;
+    }
+
+    .header p {
+      color: var(--m-sand);
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* 內容排版 - 捨棄卡片，使用優雅的邊界線 */
+    .item-group {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr;
+      align-items: start;
+      gap: 30px;
+    }
+
+    .item-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--m-sand);
+      text-transform: uppercase;
+      padding-top: 5px;
+    }
+
+    .item-title h3 {
+      font-size: 1.5rem;
+      margin: 0 0 10px 0;
+      font-weight: 600;
+    }
+
+    .item-title .metaphor {
+      display: inline-block;
+      background: #EBE4D8;
+      padding: 2px 12px;
+      font-size: 0.85rem;
+      border-radius: 4px;
+    }
+
+    .item-content {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .warning-text {
+      display: block;
+      margin-top: 15px;
+      color: #A67C7C; /* 莫蘭迪紅 */
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* 底部區域 */
+    .footer {
+      margin-top: 100px;
+      padding: 60px;
+      background-color: #EFEDE7;
+      text-align: center;
+      border-radius: 2px;
+    }
+
+    .footer h4 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .footer p {
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 2;
+      color: var(--m-taupe);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .item { grid-template-columns: 1fr; gap: 10px; }
+      .footer { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="section-wrap">
+  <header class="header">
+    <h2>運動科學的平衡支柱</h2>
+    <p>身體是一台精密車輛，唯有平衡才能開得長遠。</p>
+  </header>
+
+  <div class="item-group">
+    <div class="item">
+      <div class="item-label">Part 01</div>
+      <div class="item-title">
+        <h3>有氧運動</h3>
+        <span class="metaphor">引擎：動力來源</span>
+      </div>
+      <div class="item-content">
+        讓你在日常中動得更久。
+        <span class="warning-text">⚠️ 只有有氧：容易累</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-label">Part 02</div>
+      <div class="item-title">
+        <h3>肌力訓練</h3>
+        <span class="metaphor">車體支架：耐操程度</span>
+      </div>
+      <div class="item-content">
+        讓你在日常中動得更強。
+        <span class="warning-text">⚠️ 只有肌力：容易緊</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-label">Part 03</div>
+      <div class="item-title">
+        <h3>柔軟度與伸展</h3>
+        <span class="metaphor">避震潤滑：靈活性</span>
+      </div>
+      <div class="item-content">
+        讓你在日常中動得更自在。
+        <span class="warning-text">⚠️ 只有柔軟度：沒支撐力</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h4>身體穩，心也穩</h4>
+    <p>
+      不追求每項頂尖，而是透過了解身體避免明顯弱項。這是一份平衡的計畫，幫你避免不可逆受傷，擁有更高品質的生活。
+    </p>
+  </footer>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Easy | 在靜謐中重塑平衡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f9f7f2;
+            color: #4a4a4a;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), 
+                        url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 隱藏捲軸 */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .btn-primary {
+            background-color: #a3b18a;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        /* 手機選單動畫 */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-[#e5e1d8]">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center">
+                    <span class="text-xl md:text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 text-sm tracking-widest">
+                    <a href="#home" class="hover:text-[#a3b18a]">首頁</a>
+                    <a href="#features" class="hover:text-[#a3b18a]">課程</a>
+                    <a href="#schedule" class="hover:text-[#a3b18a]">課表</a>
+                    <a href="#pricing-member" class="hover:text-[#a3b18a]">方案</a>
+                    <a href="#trial-class" class="btn-primary px-6 py-2 rounded-full shadow-sm">預約</a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden p-2 text-[#8a9a5b]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-white shadow-xl md:hidden z-[-1] border-b border-[#e5e1d8]">
+            <div class="flex flex-col p-6 space-y-4 text-center tracking-widest">
+                <a href="#home" class="py-2 border-b border-gray-50">首頁</a>
+                <a href="#features" class="py-2 border-b border-gray-50">課程介紹</a>
+                <a href="#schedule" class="py-2 border-b border-gray-50">本週課表</a>
+                <a href="#pricing-member" class="py-2 border-b border-gray-50">會員方案</a>
+                <a href="#contact" class="btn-primary py-3 rounded-xl mt-2">立即預約</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg min-h-[90vh] flex items-center px-6 pt-20">
+        <div class="max-w-2xl w-full">
+            <h1 class="text-3xl md:text-6xl font-light mb-6 leading-tight text-[#5a5a5a]">
+                在靜謐中<br>
+                <span class="font-medium text-[#8a9a5b]">重塑身心的平衡</span>
+            </h1>
+            <p class="text-base md:text-xl text-[#666] mb-10 font-light leading-relaxed">
+                像自己家一樣的放鬆空間<br>溫暖的陪伴，與身體來場暖心的對話
+            </p>
+            <div class="flex flex-col gap-4">
+                <a href="#body_test_form" class="btn-primary text-center py-4 rounded-full font-medium text-lg shadow-lg">開始身心測驗</a>
+                <a href="#schedule" class="bg-white/90 text-[#8e8e8e] text-center border border-[#e5e1d8] py-4 rounded-full font-medium">查看本週課表</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-[#fdfbf7]">
+        <div class="px-6 text-center mb-12">
+            <span class="text-[#bfa89e] tracking-[0.2em] text-xs mb-2 block uppercase">Professional</span>
+            <h2 class="text-2xl font-light text-[#5a5a5a]">課程種類</h2>
+        </div>
+
+        <div class="flex overflow-x-auto snap-x hide-scrollbar px-6 gap-6">
+            <div class="snap-center shrink-0 w-[85%] md:w-1/3 bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">瑜珈流動</h3>
+                    <ul class="text-xs text-[#8e8e8e] space-y-2">
+                        <li>• 釋放肩頸、下背緊繃</li>
+                        <li>• 改善身體活動範圍</li>
+                        <li>• 提升睡眠與情緒品質</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="snap-center shrink-0 w-[85%] md:w-1/3 bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">肌力核心</h3>
+                    <ul class="text-xs text-[#8e8e8e] space-y-2">
+                        <li>• 減少腰痠背痛</li>
+                        <li>• 提高基礎代謝、緊實體態</li>
+                        <li>• 強化骨骼與關節保護</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="snap-center shrink-0 w-[85%] md:w-1/3 bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1591117207239-788cd4740c67?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">有氧拳擊</h3>
+                    <ul class="text-xs text-[#8e8e8e] space-y-2">
+                        <li>• 高效率燃脂、釋放壓力</li>
+                        <li>• 增強心肺功能與耐力</li>
+                        <li>• 改善免疫力與代謝</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-[10px] text-gray-400 mt-4 md:hidden">← 左右滑動查看更多 →</p>
+    </section>
+
+    <section id="schedule" class="py-20 bg-white">
+        <div class="px-6 mb-10">
+            <h2 class="text-2xl font-light text-[#5a5a5a] text-center">本週課程表</h2>
+        </div>
+
+        <div class="overflow-x-auto hide-scrollbar px-4">
+            <table class="w-full min-w-[800px] border-separate border-spacing-2">
+                <thead>
+                    <tr>
+                        <th class="w-20 p-2 text-xs font-light text-gray-400">時段</th>
+                        <th class="p-2 text-sm">一</th>
+                        <th class="p-2 text-sm">二</th>
+                        <th class="p-2 text-sm">三</th>
+                        <th class="p-2 text-sm">四</th>
+                        <th class="p-2 text-sm">五</th>
+                        <th class="p-2 text-sm text-[#8a9a5b]">六</th>
+                        <th class="p-2 text-sm text-[#8a9a5b]">日</th>
+                    </tr>
+                </thead>
+                <tbody id="course-content">
+                    </tbody>
+            </table>
+        </div>
+        <div class="flex justify-center gap-4 mt-6 px-6 overflow-x-auto hide-scrollbar">
+            <span class="flex items-center gap-1 text-[10px] whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> 溫和</span>
+            <span class="flex items-center gap-1 text-[10px] whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-amber-400"></span> 進階</span>
+            <span class="flex items-center gap-1 text-[10px] whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-rose-500"></span> 高能</span>
+        </div>
+    </section>
+
+    <section id="pricing-member" class="py-20 bg-[#f4f1ea]">
+        <div class="px-6 text-center mb-12">
+            <h2 class="text-2xl font-light text-[#5a5a5a]">會員方案</h2>
+        </div>
+        <div class="px-6 space-y-6">
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm text-center">
+                <span class="text-[10px] tracking-widest text-[#bfa89e]">入門首選</span>
+                <div class="text-2xl font-light my-3 text-[#5a5a5a]">NT$ 6,940</div>
+                <p class="text-sm text-gray-500 mb-4">12堂班 / 90天</p>
+                <div class="h-[1px] bg-gray-100 w-full mb-4"></div>
+                <p class="text-xs text-gray-400">平均 NT$ 578/堂</p>
+            </div>
+            
+            <div class="bg-white p-8 rounded-[2rem] shadow-md border-2 border-[#a3b18a] text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-[#a3b18a] text-white text-[10px] px-4 py-1 rounded-bl-xl">熱門推薦</div>
+                <span class="text-[10px] tracking-widest text-[#bfa89e]">體態有感班</span>
+                <div class="text-2xl font-light my-3 text-[#5a5a5a]">NT$ 10,400</div>
+                <p class="text-sm text-gray-500 mb-4">18+1堂 / 90天</p>
+                <div class="h-[1px] bg-gray-100 w-full mb-4"></div>
+                <p class="text-xs text-gray-400">平均 NT$ 547/堂</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-[#fdfbf7] px-6">
+        <h2 class="text-2xl font-light mb-6">開始您的旅程</h2>
+        <div class="space-y-8">
+            <div>
+                <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                    我們位於台北市永康商圈，預約制的純淨空間。<br>歡迎加入官方 Line 諮詢。
+                </p>
+                <a href="https://lin.ee/pEakrZf" class="btn-primary inline-block px-10 py-4 rounded-full shadow-lg">
+                    加入官方 LINE
+                </a>
+            </div>
+            <div class="rounded-3xl overflow-hidden h-64 shadow-inner">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0123!2d121.5298!3d25.0329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a99e7c3e5e4d%3A0x6b8f368f5c88c784!2zMTA2Y2h36Ie65YyX5biC5aSn5a6J5Y2A5rC45bq36KGXNzXlt7cyMOiZnw!5e0!3m2!1szh-TW!2stw!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-white border-t text-center">
+        <span class="text-sm font-medium tracking-widest text-[#8a9a5b]">SOUL EASY 2026</span>
+    </footer>
+
+    <script>
+        // 手機選單開關
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // 點擊選單連結後自動關閉
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        // 課表資料與渲染 (沿用並微調樣式)
+        const scheduleData = [
+            { "time": "05:30", "days": { "tue": { "title": "瑜伽", "coach": "韋敏", "diff": 3 }, "thu": { "title": "瑜伽", "coach": "韋敏", "diff": 3 }, "sat": { "title": "瑜伽", "coach": "韋敏", "diff": 3 } } },
+            { "time": "10:00", "days": { "tue": { "title": "新手瑜伽", "coach": "韋敏", "diff": 1 }, "thu": { "title": "初階肌力", "coach": "蜜桃", "diff": 1 }, "sat": { "title": "TRX雕塑", "coach": "蜜桃", "diff": 2 } } },
+            { "time": "12:15", "days": { "tue": { "title": "綜合雕塑", "coach": "蜜桃", "diff": 2 }, "wed": { "title": "拳擊有氧", "coach": "博堯", "diff": 3 } } },
+            { "time": "19:30", "days": { "mon": { "title": "瑜伽(女)", "coach": "韋敏", "diff": 3 }, "tue": { "title": "拳擊有氧", "coach": "博堯", "diff": 3 }, "wed": { "title": "瑜伽(男)", "coach": "韋敏", "diff": 3 } } }
+        ];
+
+        const diffStyles = {
+            1: "bg-emerald-50 text-emerald-700",
+            2: "bg-amber-50 text-amber-700",
+            3: "bg-rose-50 text-rose-700"
+        };
+
+        function initSchedule() {
+            const tbody = document.getElementById('course-content');
+            const dayKeys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            let html = '';
+            scheduleData.forEach(row => {
+                let rowHtml = `<tr><td class="text-center text-[10px] text-gray-400 font-light">${row.time}</td>`;
+                dayKeys.forEach(day => {
+                    const course = row.days[day];
+                    if (course) {
+                        rowHtml += `<td class="p-1">
+                            <div class="${diffStyles[course.diff]} p-3 rounded-xl text-center min-h-[70px] flex flex-col justify-center">
+                                <span class="block font-bold text-[11px] leading-tight">${course.title}</span>
+                                <span class="text-[9px] mt-1 opacity-70">${course.coach}</span>
+                            </div>
+                        </td>`;
+                    } else {
+                        rowHtml += `<td class="p-1"><div class="bg-gray-50/50 rounded-xl min-h-[70px]"></div></td>`;
+                    }
+                });
+                rowHtml += '</tr>';
+                html += rowHtml;
+            });
+            tbody.innerHTML = html;
+        }
+        document.addEventListener('DOMContentLoaded', initSchedule);
+    </script>
+</body>
+</html>

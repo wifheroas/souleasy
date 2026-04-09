@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>莫蘭迪運動科學平衡 - 無卡片版</title>
+<style>
+  /* 基礎重置與字體設定 */
+  .morandi-motion-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* 優先使用帶有法式優雅感的字體，搭配預設中文 */
+    font-family: 'Optima', 'Candara', 'Palatino', 'Source Han Serif TC', 'SimSun', serif;
+  }
+
+  /* 整個 Section 的背景 (奶油燕麥色) */
+  .morandi-motion-section {
+    background-color: #F8F5F0; /* Creamy Oat */
+    color: #5D564F; /* Taupe Dark Brown for text */
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* 防止 SVG 裝飾溢出 */
+  }
+
+  .morandi-container {
+    max-width: 1200px;
+    width: 100%;
+    position: relative; /* 為裝飾元素做準備 */
+  }
+
+  /* --- 標題區塊 --- */
+  .morandi-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  /* 標題上的精緻小裝飾線 */
+  .morandi-header::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background-color: #A39B92;
+    margin: 0 auto 20px;
+  }
+
+  .morandi-header h2 {
+    font-size: 2.8rem;
+    font-weight: 500; /* 宋體不需太粗 */
+    color: #4A443F;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .morandi-header p {
+    font-size: 1.1rem;
+    color: #8C8279;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* --- 三大支柱區塊 (無卡片，交錯排版) --- */
+  .pillar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100px; /* 區塊間距 */
+    gap: 50px;
+  }
+
+  /* 讓偶數行反轉，形成交錯感 */
+  .pillar-row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  /* 文字內容區塊 */
+  .pillar-content {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  /* 視覺裝飾區塊 (代替卡片) */
+  .pillar-visual {
+    flex: 1;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* SVG 圖示基礎樣式 */
+  .pillar-icon {
+    width: 80px;
+    height: 80px;
+    opacity: 0.9;
+  }
+
+  /* 卡片比喻文字 (作為視覺裝飾的一部分) */
+  .metaphor-text {
+    font-size: 6rem; /* 超大號字體做背景 */
+    font-weight: 700;
+    position: absolute;
+    opacity: 0.05; /* 極低透明度 */
+    letter-spacing: -5px;
+    pointer-events: none;
+  }
+
+  /* 每個類別的具體設定 (莫蘭迪色系) */
+  
+  /* 有氧 - 霧藍 */
+  .cardio .pillar-visual {
+    background-color: #D6E0E5; /* Morandi Fog Blue */
+    border-radius: 50% 10% 50% 10%; /* 非對稱圓角增加設計感 */
+  }
+  .cardio .pillar-icon { color: #6C8EA4; }
+  .cardio .metaphor-text { color: #6C8EA4; top: 10%; left: 5%; }
+  .cardio .pillar-category { color: #6C8EA4; }
+
+  /* 肌力 - 豆沙紅/暖棕 */
+  .strength .pillar-visual {
+    background-color: #E6D8D1; /* Morandi Dusty Rose/Warm Taupe */
+    border-radius: 10% 50% 10% 50%;
+  }
+  .strength .pillar-icon { color: #A68A80; }
+  .strength .metaphor-text { color: #A68A80; bottom: 10%; right: 5%; }
+  .strength .pillar-category { color: #A68A80; }
+
+  /* 柔軟度 - 鼠尾草綠 */
+  .flexibility .pillar-visual {
+    background-color: #E2E9E2; /* Morandi Sage Green */
+    border-radius: 30% 30% 30% 30%;
+  }
+  .flexibility .pillar-icon { color: #8FA48F; }
+  .flexibility .metaphor-text { color: #8FA48F; top: 20%; right: 10%; }
+  .flexibility .pillar-category { color: #8FA48F; }
+
+  /* --- 文字內容詳情 --- */
+  .pillar-category {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .pillar-title {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #4A443F;
+    margin-bottom: 15px;
+  }
+
+  .pillar-metaphor-sub {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #7A7168;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    font-style: italic; /* 法式優雅感的斜體 */
+  }
+  
+  .pillar-metaphor-sub::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background-color: #D6CEC5;
+    margin-left: 15px;
+  }
+
+  .pillar-desc {
+    color: #7A7168;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    font-weight: 300;
+  }
+
+  /* 警告文字 (柔和的強調) */
+  .pillar-warning {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #A39B92; /* 不再使用尖銳的紅色，而是使用中性灰棕 */
+    font-weight: 400;
+    border-left: 2px solid #D6CEC5;
+    padding-left: 15px;
+  }
+  
+  .pillar-warning svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    fill: #A39B92;
+    opacity: 0.7;
+  }
+
+  /* --- 底部總結區塊 --- */
+  .morandi-footer {
+    text-align: center;
+    background-color: #EEEAE3; /* 稍深的奶油燕麥色做底 */
+    padding: 70px 40px;
+    position: relative;
+    margin-top: 50px;
+  }
+
+  /* 底部精緻的幾何裝飾 */
+  .morandi-footer::after {
+    content: '◇ ◇ ◇';
+    display: block;
+    color: #D6CEC5;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    letter-spacing: 10px;
+  }
+
+  .morandi-footer h3 {
+    font-size: 2rem;
+    color: #4A443F;
+    margin-bottom: 25px;
+    font-weight: 400;
+  }
+
+  .morandi-footer p {
+    color: #7A7168;
+    line-height: 1.9;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+  
+  .highlight-morandi {
+    color: #5D564F;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: #D6CEC5;
+    text-underline-offset: 5px;
+  }
+
+  /* --- RWD 響應式調整 --- */
+  @media (max-width: 900px) {
+    .pillar-row, .pillar-row:nth-child(even) {
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+    
+    .pillar-content {
+      text-align: center;
+      max-width: 100%;
+    }
+    
+    .pillar-visual {
+      width: 100%;
+      height: 200px;
+      border-radius: 15px !important; /* 偶數行反轉 */
+    }
+
+    .pillar-metaphor-sub {
+      justify-content: center;
+    }
+    .pillar-metaphor-sub::after {
+      display: none;
+    }
+    
+    .pillar-warning {
+      justify-content: center;
+      border-left: none;
+      border-top: 1px solid #D6CEC5;
+      padding-left: 0;
+      padding-top: 15px;
+    }
+    
+    .morandi-header h2 { font-size: 2.2rem; }
+    .pillar-title { font-size: 1.8rem; }
+    .metaphor-text { display: none; } /* 手機版藏起超大文字 */
+  }
+</style>
+</head>
+<body>
+
+<section class="morandi-motion-section">
+  <div class="morandi-container">
+    
+    <header class="morandi-header">
+      <h2>身體的平衡方程式</h2>
+      <p>運動科學的三大支柱：有氧、肌力與柔軟度。唯有三者平衡，這台「身體」車輛才能運行無礙，展現極致靈活。</p>
+    </header>
+
+    <div class="pillar-row cardio">
+      <div class="pillar-visual">
+        <span class="metaphor-text">ENGINE</span>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.1114 20.3541C13.2929 20.9416 12.8715 21.5 12.2575 21.5H11.7424C11.1284 21.5 10.707 20.9416 10.8885 20.3541L12 16.75L13.1114 20.3541Z" fill="currentColor"/><path d="M11.9999 15.5L8.5 12.0001M11.9999 15.5L15.4999 12.0001M11.9999 15.5V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 16.5C4.11929 16.5 3 15.3807 3 14C3 12.6193 4.11929 11.5 5.5 11.5C5.99049 11.5 6.44976 11.6421 6.83626 11.8876C7.30402 9.68233 9.25774 8 11.6 8C14.3614 8 16.6 10.2386 16.6 13C16.6 13.1706 16.5915 13.3392 16.575 13.5052C17.3787 13.7946 17.95 14.5611 17.95 15.4615C17.95 16.6151 17.0151 17.55 15.8615 17.55H15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="pillar-content">
+        <div class="pillar-category">Pillar 01</div>
+        <h3 class="pillar-title">有氧運動</h3>
+        <p class="pillar-metaphor-sub">引擎．動力來源</p>
+        <p class="pillar-desc">它決定了你的能量輸出與長期續航力，讓你在日常生活中<span class="highlight-morandi">動得更久</span>，展現持久不衰的活力。</p>
+        <div class="pillar-warning">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          提醒：若只有有氧，身體容易感到疲累
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-row strength">
+      <div class="pillar-visual">
+        <span class="metaphor-text">CHASSIS</span>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 10V5C6 3.89543 6.89543 3 8 3H16C17.1046 3 18 3.89543 18 5V10M6 10C4.89543 10 4 10.8954 4 12V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V12C20 10.8954 19.1046 10 18 10M6 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 13V18M9 15V16M15 15V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="pillar-content">
+        <div class="pillar-category">Pillar 02</div>
+        <h3 class="pillar-title">肌力訓練</h3>
+        <p class="pillar-metaphor-sub">車體支架．耐操程度</p>
+        <p class="pillar-desc">構建保護關節與骨骼的穩固鋼架，大幅提升身體強度，讓你在日常生活中<span class="highlight-morandi">動得更強</span>。</p>
+        <div class="pillar-warning">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          提醒：若只有肌力，身體容易感到緊繃
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-row flexibility">
+      <div class="pillar-visual">
+        <span class="metaphor-text">SUSPENSION</span>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12C3 12 5.5 8.5 12 8.5C18.5 8.5 21 12 21 12C21 12 18.5 15.5 12 15.5C5.5 15.5 3 12 3 12Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div class="pillar-content">
+        <div class="pillar-category">Pillar 03</div>
+        <h3 class="pillar-title">柔軟度與伸展</h3>
+        <p class="pillar-metaphor-sub">避震與潤滑．靈活性</p>
+        <p class="pillar-desc">流暢的活動度是身體的緩衝系統，能有效吸收衝擊，讓你在日常生活中<span class="highlight-morandi">動得更自在</span>。</p>
+        <div class="pillar-warning">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          提醒：若只有柔軟度，關節容易缺乏支撐力
+        </div>
+      </div>
+    </div>
+
+    <footer class="morandi-footer">
+      <h3>身體穩，心也穩</h3>
+      <p>
+        我們的目標並非每項都要練到頂尖，而是透過<span class="highlight-morandi">認識自己的身體，避免明顯弱項</span>。
+        這是一個平衡的運動計畫，旨在幫你避免不可逆的受傷，並擁有更加良好、自在的生活品質。
+      </p>
+    </footer>
+
+  </div>
+</section>
+
+</body>
+</html>

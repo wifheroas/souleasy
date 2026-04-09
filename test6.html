@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>身體科學三角形平衡</title>
+  <style>
+    :root {
+      --bg: #F9F7F2;
+      --text: #5D564F;
+      --m-blue: #B8C6CF;   /* 有氧 */
+      --m-rose: #D9C5BD;   /* 肌力 */
+      --m-sage: #C7D1C6;   /* 柔軟度 */
+      --line: #E2DDD6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Optima", "PingFang TC", "Microsoft JhengHei", serif;
+      display: flex;
+      justify-content: center;
+      padding: 100px 20px;
+    }
+
+    .triangle-section {
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .header { margin-bottom: 120px; }
+    .header h2 { font-size: 2.2rem; letter-spacing: 5px; font-weight: 500; margin-bottom: 15px; }
+    .header p { color: #A69D95; font-size: 1rem; }
+
+    /* 三角形佈局核心 */
+    .equilibrium-container {
+      position: relative;
+      width: 600px;
+      height: 520px;
+      margin: 0 auto 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 中心幾何三角形 */
+    .base-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 200px solid transparent;
+      border-right: 200px solid transparent;
+      border-bottom: 346px solid rgba(230, 225, 215, 0.5); /* 奶油底色三角形 */
+      z-index: 1;
+    }
+
+    /* 三角形的邊框刻度線 */
+    .triangle-border {
+      position: absolute;
+      width: 400px;
+      height: 346px;
+      border-bottom: 1px solid var(--line);
+      z-index: 2;
+    }
+    .triangle-border::before, .triangle-border::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 1px;
+      background: var(--line);
+      top: 173px;
+    }
+    .triangle-border::before { left: -100px; transform: rotate(60deg); }
+    .triangle-border::after { right: -100px; transform: rotate(-60deg); }
+
+    /* 三大頂點組件 */
+    .vertex {
+      position: absolute;
+      width: 280px;
+      z-index: 10;
+    }
+
+    /* 頂點圓標 */
+    .vertex-dot {
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 3px solid var(--dot-color);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+
+    /* 定位三大頂點 */
+    /* 有氧 - 頂端 */
+    .v-cardio { top: -80px; left: 50%; transform: translateX(-50%); }
+    .v-cardio .vertex-dot { --dot-color: var(--m-blue); }
+
+    /* 肌力 - 右底 */
+    .v-strength { bottom: -20px; right: -120px; text-align: left; }
+    .v-strength .vertex-dot { margin-left: 0; --dot-color: var(--m-rose); }
+
+    /* 柔軟度 - 左底 */
+    .v-flex { bottom: -20px; left: -120px; text-align: right; }
+    .v-flex .vertex-dot { margin-right: 0; --dot-color: var(--m-sage); }
+
+    /* 文字內容樣式 */
+    .vertex h3 { font-size: 1.6rem; margin-bottom: 5px; letter-spacing: 2px; }
+    .vertex .label { 
+      font-size: 0.8rem; 
+      color: #9E968E; 
+      display: block; 
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+    .vertex p { font-size: 1rem; line-height: 1.6; color: #7A7168; }
+    .vertex .alert { font-size: 0.85rem; color: #B29696; margin-top: 10px; font-weight: 500; }
+
+    /* 底部收尾 */
+    .summary {
+      max-width: 750px;
+      margin: 0 auto;
+      padding-top: 60px;
+      border-top: 1px solid var(--line);
+    }
+    .summary h4 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 400; }
+    .summary p { line-height: 2; color: #8C8279; font-size: 1.05rem; }
+
+    @media (max-width: 900px) {
+      .equilibrium-container { width: 100%; height: auto; display: block; margin-bottom: 50px; }
+      .base-triangle, .triangle-border { display: none; }
+      .vertex { position: static; width: 100%; text-align: center !important; margin-bottom: 80px; }
+      .vertex-dot { margin: 0 auto 20px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="triangle-section">
+  <header class="header">
+    <h2>運動科學的平衡三角</h2>
+    <p>有氧、肌力、柔軟度：三位一體的車輛精密工學</p>
+  </header>
+
+  <div class="equilibrium-container">
+    <div class="base-triangle"></div>
+    <div class="triangle-border"></div>
+
+    <div class="vertex v-cardio">
+      <div class="vertex-dot"></div>
+      <span class="label">The Engine / 動力來源</span>
+      <h3>有氧運動</h3>
+      <p>決定能量輸出，讓身體動得更久</p>
+      <div class="alert">⚠️ 只有有氧：容易累</div>
+    </div>
+
+    <div class="vertex v-strength">
+      <div class="vertex-dot"></div>
+      <span class="label">The Chassis / 耐操程度</span>
+      <h3>肌力訓練</h3>
+      <p>構建保護結構，讓身體動得更強</p>
+      <div class="alert">⚠️ 只有肌力：容易緊</div>
+    </div>
+
+    <div class="vertex v-flex">
+      <div class="vertex-dot"></div>
+      <span class="label">The Suspension / 靈活性</span>
+      <h3>柔軟度與伸展</h3>
+      <p>保障活動範圍，讓身體動得自在</p>
+      <div class="alert">⚠️ 只有柔軟度：沒支撐力</div>
+    </div>
+  </div>
+
+  <footer class="summary">
+    <h4>身體穩，心也穩</h4>
+    <p>
+      我們並非要求每項都要練到頂尖，而是透過認識了解自己的身體<b>避免明顯的弱項</b>。這是一個平衡的運動計畫，旨在讓你擁有更加良好自在的生活品質，並有效避免不可逆的受傷。
+    </p>
+  </footer>
+</section>
+
+</body>
+</html>

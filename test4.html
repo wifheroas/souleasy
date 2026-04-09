@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>身體精密工學循環</title>
+  <style>
+    :root {
+      --m-cream: #F9F7F2;
+      --m-taupe: #5D564F;
+      --m-blue: #A9BCC9; /* 有氧 - 霧藍 */
+      --m-rose: #D9C9C5; /* 肌力 - 暖粉 */
+      --m-sage: #B9C7B9; /* 柔軟度 - 鼠尾草綠 */
+      --line: #E0DDD7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--m-cream);
+      color: var(--m-taupe);
+      font-family: "PingFang TC", "Microsoft JhengHei", serif;
+      display: flex;
+      justify-content: center;
+      padding: 80px 20px;
+    }
+
+    .cycle-section {
+      max-width: 1100px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* 頂部標題 */
+    .header { margin-bottom: 100px; }
+    .header h2 { font-size: 2.2rem; letter-spacing: 6px; font-weight: 500; }
+    .header p { color: #A69D95; margin-top: 10px; font-size: 0.95rem; }
+
+    /* 中央環狀佈局控制 */
+    .visual-core {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 零件所在的圓環軌道 */
+    .main-ring {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    }
+
+    /* 中心傳動軸核心 */
+    .center-axle {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      z-index: 10;
+      border: 4px solid var(--m-cream);
+    }
+    .center-axle span { font-size: 0.8rem; letter-spacing: 2px; color: #BBB; }
+
+    /* 三大支柱組件 */
+    .pillar-node {
+      position: absolute;
+      width: 260px;
+      text-align: left;
+      transition: all 0.4s ease;
+    }
+
+    /* 節點圓標 (直接在圓環上的點) */
+    .node-dot {
+      width: 24px;
+      height: 24px;
+      background: white;
+      border: 5px solid var(--dot-color);
+      border-radius: 50%;
+      position: absolute;
+      z-index: 5;
+    }
+
+    /* 定位邏輯 - 分別位於圓環的 0, 120, 240 度 */
+    /* 有氧 - 頂部 */
+    .node-cardio { top: -20px; left: 50%; transform: translateX(-50%); text-align: center; }
+    .node-cardio .node-dot { top: 95px; left: 50%; transform: translateX(-50%); --dot-color: var(--m-blue); }
+
+    /* 肌力 - 右下 */
+    .node-strength { bottom: 80px; right: -120px; }
+    .node-strength .node-dot { top: -35px; left: -25px; --dot-color: var(--m-rose); }
+
+    /* 柔軟度 - 左下 */
+    .node-flex { bottom: 80px; left: -120px; text-align: right; }
+    .node-flex .node-dot { top: -35px; right: -25px; --dot-color: var(--m-sage); }
+
+    /* 內文標題與說明 */
+    .pillar-node h3 { font-size: 1.5rem; margin-bottom: 5px; }
+    .pillar-node .tag { 
+      font-size: 0.75rem; 
+      letter-spacing: 1px; 
+      background: #EEEAE3; 
+      padding: 2px 10px; 
+      border-radius: 4px; 
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .pillar-node p { font-size: 0.95rem; line-height: 1.6; color: #888; }
+    .alert { font-size: 0.85rem; color: #B29696; margin-top: 8px; font-style: italic; }
+
+    /* 底部收尾 */
+    .footer-note {
+      margin-top: 50px;
+      padding: 40px;
+      border-top: 1px solid var(--line);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-note b { font-size: 1.4rem; display: block; margin-bottom: 15px; color: var(--m-taupe); }
+
+    /* RWD 調整 */
+    @media (max-width: 900px) {
+      .visual-core { width: 100%; height: auto; display: block; }
+      .main-ring, .center-axle, .node-dot { display: none; }
+      .pillar-node { position: static; width: 100%; text-align: center; margin-bottom: 60px; transform: none; }
+      .pillar-node p { max-width: 300px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="cycle-section">
+  <header class="header">
+    <h2>身體精密工學循環</h2>
+    <p>有氧、肌力、柔軟度：三位一體的動能平衡</p>
+  </header>
+
+  <div class="visual-core">
+    <div class="main-ring"></div>
+    <div class="center-axle">
+      <span>BALANCE</span>
+    </div>
+
+    <div class="pillar-node node-cardio">
+      <span class="tag">引擎：動力來源</span>
+      <h3>有氧運動</h3>
+      <p>決定續航力，讓你動得更久</p>
+      <div class="alert">⚠️ 只有有氧：容易累</div>
+    </div>
+
+    <div class="pillar-node node-strength">
+      <span class="tag">支架：耐操程度</span>
+      <h3>肌力訓練</h3>
+      <p>構建強度，讓你動得更強</p>
+      <div class="alert">⚠️ 只有肌力：容易緊</div>
+    </div>
+
+    <div class="pillar-node node-flex">
+      <span class="tag">避震：靈活性</span>
+      <h3>柔軟度與伸展</h3>
+      <p>保障範圍，讓你動得自在</p>
+      <div class="alert">⚠️ 只有柔軟：沒支撐力</div>
+    </div>
+  </div>
+
+  <footer class="footer-note">
+    <b>身體穩，心也穩</b>
+    <p>
+      這是一個平衡的運動計畫。透過認識了解自己的身體避免明顯的弱項，<br>
+      不僅能提升生活品質，更能有效避免不可逆的受傷。
+    </p>
+  </footer>
+</section>
+
+</body>
+</html>
