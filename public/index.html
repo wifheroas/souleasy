@@ -17,6 +17,7 @@
             scroll-behavior: smooth;
             background-color: #f9f7f2; /* 奶油底色 */
             color: #4a4a4a; /* 深灰棕文字 */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .hero-bg {
@@ -51,7 +52,7 @@
         .btn-primary {
             background-color: #a3b18a;
             color: white;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
         }
         .btn-primary:hover {
             opacity: 0.85;
@@ -73,24 +74,48 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* 手機選單動畫 */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+        }
+
     </style>
 </head>
-<body class="selection:bg-[#a3b18a] selection:text-white">
+<body class="overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-[#e5e1d8]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between h-20">
+<nav class="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-[#e5e1d8]">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex items-center justify-between h-16 md:h-20">
                 <div class="flex items-center">
-                    <span class="text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></span>
+                    <span class="text-xl md:text-2xl font-medium tracking-widest text-[#8a9a5b]">SOUL<span class="font-light text-[#bfa89e]">EASY</span></span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-10 text-sm tracking-widest">
+                
+                <div class="hidden md:flex items-center space-x-8 text-sm tracking-widest">
                         <a href="#home" class="hover:text-[#a3b18a] transition-colors">首頁</a>
                         <a href="#schedule" class="hover:text-[#a3b18a] transition-colors">課程介紹</a>
                         <a href="#pricing-member" class="hover:text-[#a3b18a] transition-colors">會員方案</a>
                         <a href="#trial-class" class="btn-primary px-8 py-2.5 rounded-full font-medium transition-all shadow-md">預約參觀</a>
-                    </div>
                 </div>
+                
+                <button id="menu-btn" class="md:hidden p-2 text-[#8a9a5b]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full bg-white shadow-xl md:hidden z-[-1] border-b border-[#e5e1d8]">
+            <div class="flex flex-col p-6 space-y-4 text-center tracking-widest">
+                <a href="#home" class="py-2 border-b border-gray-50"></a>
+                <a href="#features" class="py-2 border-b border-gray-50">課程介紹</a>
+                <a href="#schedule" class="py-2 border-b border-gray-50">本週課表</a>
+                <a href="#pricing-member" class="py-2 border-b border-gray-50">會員方案</a>
+                <a href="#contact" class="py-2 border-b border-gray-50">立即預約</a>
             </div>
         </div>
     </nav>
@@ -111,66 +136,63 @@
         </div>
     </section>
     <!-- 課程種類 Section -->
-    <section id="features" class="pt-32 bg-[#fdfbf7]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="text-[#bfa89e] tracking-[0.3em] text-sm uppercase mb-4 block">Here For You</span>
-                <h2 class="text-3xl md:text-4xl font-light text-[#5a5a5a]">課程種類</h2>
-            </div>
+    <section id="features" class="py-20 bg-[#fdfbf7]">
+        <div class="px-6 text-center mb-12">
+            <span class="text-[#bfa89e] tracking-[0.2em] text-xs mb-2 block uppercase">Professional</span>
+            <h2 class="text-2xl font-light text-[#5a5a5a]">課程種類</h2>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
-                    <div class="h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="瑜珈區" class="w-full h-full object-cover grayscale-[30%]">
-                        <div class="absolute inset-0 bg-[#97a7b0]/10"></div>
-                    </div>
-                    <div class="p-10 text-left">
-                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">瑜珈</h3>
-                        <p class="leading-relaxed  mb-2 text-m">放鬆、流動、修復</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 肩頸、下背比較不緊</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 改善身體活動範圍 不卡卡</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 呼吸變深、情緒變穩</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 降低運動傷害風險改善姿勢、體態</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 減緩壓力 加速運動後酸痛恢復</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 提升睡眠品質</p>                    
+        <div class="flex overflow-x-auto snap-x hide-scrollbar px-6 gap-6 ">
+            <div class="snap-center shrink-0 w-[85%] md:w-[32%] bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">瑜珈流動</h3>
+                    <p class="leading-relaxed  mb-2 text-m">放鬆、流動、修復</p>
+                    <ul class="text-[#8e8e8e] font-light leading-relaxed text-sm">
+                        <li>✔ 肩頸、下背比較不緊</li>
+                        <li>✔ 改善身體活動範圍 不卡卡</li>
+                        <li>✔ 呼吸變深、情緒變穩</li>
+                        <li>✔ 降低運動傷害風險改善姿勢、體態</li>
+                        <li>✔ 減緩壓力 加速運動後酸痛恢復</li>
+                        <li>✔ 提升睡眠品質</li>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
-                    <div class="h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80" alt="肌力區" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-[#bfa89e]/10"></div>
-                    </div>
-                    <div class="p-10 text-left">
-                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">肌力 </h3>
-                        <p class="leading-relaxed  mb-2 text-m">支撐、穩定、安全感</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 核心穩定，腰痠背痛減少</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 身體線條變緊實 增加自信</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 提高基礎代謝，不易復胖</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 關節比較安全，不容易受傷</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 強化骨骼預防骨質疏鬆</p>
-                        <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 改善心理健康，減輕焦慮憂鬱</p>                    
+            <div class="snap-center shrink-0 w-[85%] md:w-[32%] bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">肌力核心</h3>
+                    <p class="leading-relaxed  mb-2 text-m">支撐、穩定、安全感</p>
+                    <ul class="text-[#8e8e8e] font-light leading-relaxed text-sm">
+                        <li>✔ 核心穩定，腰痠背痛減少</li>
+                        <li>✔ 身體線條變緊實 增加自信</li>
+                        <li>✔ 提高基礎代謝，不易復胖</li>
+                        <li>✔ 關節比較安全，不容易受傷</li>
+                        <li>✔ 強化骨骼預防骨質疏鬆</li>
+                        <li>✔ 改善心理健康，減輕焦慮憂鬱</li>
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-[2rem] overflow-hidden card-hover soft-shadow">
-                    <div class="h-64 relative">
-                        <img src="/images/gym.png" alt="諮詢區" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-[#a3b18a]/10"></div>
-                    </div>
-                    <div class="p-10 text-left">
-                        <h3 class="text-xl font-medium mb-4 text-[#5a5a5a]">有氧拳擊</h3>
-                        <p class="leading-relaxed  mb-2 text-m">增加循環、代謝、釋放</p>
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 讓心臟變強，走樓梯不容易喘</p>
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 增強免疫力
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 壓力有出口 流汗後釋放情緒</p>
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 提升耐力有效燃脂</p>
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 睡眠品質提升</p>
-                    <p class="text-[#8e8e8e] font-light leading-relaxed text-sm">✔ 預防慢性疾病風險</p>
+
+             <div class="snap-center shrink-0 w-[85%] md:w-[32%] bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="h-48 overflow-hidden">
+                    <img src="/images/gym.png" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium mb-3">有氧拳擊</h3>
+                    <p class="leading-relaxed  mb-2 text-m">增加循環、代謝、釋放</p>
+                    <ul class="text-[#8e8e8e] font-light leading-relaxed text-sm">
+                        <li>✔ 讓心臟變強，走樓梯不容易喘</li>
+                        <li>✔ 增強免疫力</li>
+                        <li>✔ 壓力有出口 流汗後釋放情緒</li>
+                        <li>✔ 提升耐力有效燃脂</li>
+                        <li>✔ 睡眠品質提升</li>
+                        <li>✔ 預防慢性疾病風險</li>
                     </div>
                 </div>
-                
-            </div>
         </div>
     </section>
     <!-- 身體測驗表單 Section -->
@@ -441,6 +463,19 @@
         </div>
     </footer>
     <script>
+        // 手機選單開關
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // 點擊選單連結後自動關閉
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+
         function scrollSlider(direction) {
             const slider = document.getElementById('testimonial-slider');
             // 設定每次捲動的距離 (卡片寬度 + 間距)
